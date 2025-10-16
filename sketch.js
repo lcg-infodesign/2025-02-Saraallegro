@@ -9,8 +9,8 @@ function preload() {
 
 function setup() {
   let outerPadding = 20;
-  let padding = 10;
-  let itemSize = 30;
+  let padding = 15;
+  let itemSize = 80; // INGRANDITO
 
   // Calcolo numero di colonne che entrano in una riga
   let cols = floor((windowWidth - outerPadding * 2) / (itemSize + padding));
@@ -44,7 +44,7 @@ function setup() {
 
     // Valore per la dimensione
     let myValue = Number(data["column0"]);
-    let scaledValues = map(myValue, minValues, maxValues, 1, itemSize);
+    let scaledValues = map(myValue, minValues, maxValues, 10, itemSize); // MIN VALUE INGRANDITO
 
     // Valore per il colore
     let value2 = Number(data["column2"]);
@@ -82,29 +82,29 @@ function setup() {
 }
 
 // Disegno lo smile centrato
-    function drawSmile(x, y, size, col) {
-     push();
-     translate(x + size/2, y + size/2);
-  
-     fill(col);
-     stroke(0);
-     strokeWeight(1);
-      ellipse(0, 0, size); // faccia
+function drawSmile(x, y, size, col) {
+  push();
+  translate(x + size / 2, y + size / 2);
 
-     fill(0);
-     let eyeOffset = size * 0.25;
-     let eyeSize = size * 0.1;
-     ellipse(-eyeOffset, -eyeOffset, eyeSize); // occhio sinistro
-     ellipse(eyeOffset, -eyeOffset, eyeSize);  // occhio destro
+  fill(col);
+  stroke(0);
+  strokeWeight(1);
+  ellipse(0, 0, size); // faccia
 
-     noFill();
-     stroke(0);
-     strokeWeight(2);
-      let smileWidth = size * 0.6;
-      let smileHeight = size * 0.3;
-     arc(0, 0, smileWidth, smileHeight, 0, PI); // sorriso
+  fill(0);
+  let eyeOffset = size * 0.25;
+  let eyeSize = size * 0.1;
+  ellipse(-eyeOffset, -eyeOffset, eyeSize); // occhio sinistro
+  ellipse(eyeOffset, -eyeOffset, eyeSize);  // occhio destro
 
-   pop();
+  noFill();
+  stroke(0);
+  strokeWeight(2);
+  let smileWidth = size * 0.6;
+  let smileHeight = size * 0.3;
+  arc(0, 0, smileWidth, smileHeight, 0, PI); // sorriso
+
+  pop();
 }
 
 function draw() {
